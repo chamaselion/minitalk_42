@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:42:15 by bszikora          #+#    #+#             */
-/*   Updated: 2024/09/04 15:08:10 by bszikora         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:10:26 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	send_message(int pid, char *message)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(300);
+			usleep(200);
 			j--;
 		}
 		if (message[i] == '\0')
