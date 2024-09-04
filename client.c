@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:42:15 by bszikora          #+#    #+#             */
-/*   Updated: 2024/09/03 13:43:50 by bszikora         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:08:10 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	send_message(int pid, char *message)
 {
-	int	i;
-	int	j;
-	char c;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
 	while (1)
@@ -38,15 +38,35 @@ void	send_message(int pid, char *message)
 	}
 }
 
+int	check_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int	pid;
 
 	if (argc == 3)
 	{
+		if (check_str(argv[1]))
+		{
+			ft_printf("Error. Enter valid pid printed by the server\n");
+			exit(0);
+		}
 		pid = ft_atoi(argv[1]);
 		send_message(pid, argv[2]);
 	}
 	else
 		ft_printf("Usage: %s [PID] [message]\n", argv[0]);
+	return (0);
 }
